@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 import "./index.css";
 const themes = {
     light: {
@@ -12,6 +12,7 @@ const themes = {
         background: "#222222",
     },
 }
+export const UserContext = createContext(null);
 const ThemeContext = React.createContext(themes.light);
 export default function Index() {
     const [theme, setTheme] = useState(themes.dark);

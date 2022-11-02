@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Counter from './learn-useState/Counter';
 import Effect from './learn-useEffect/index';
-import Context from './learn-useContext/index';
+import Context, { UserContext } from './learn-useContext/index';
 function App() {
+  const [values, setValues] = useState('Dari halaman Context')
   return (
     <Router><div className="App-header">
       <nav className='NavBar'>
@@ -21,11 +22,13 @@ function App() {
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path='/' exact element={<Counter/>}/>
-        <Route path='/effect' exact element={<Effect/>} />
-        <Route path='/context' exact element={<Context/>} />
-      </Routes>
+      <UserContext.Provider value={{ values, setValues }}>
+        <Routes>
+          <Route path='/' exact element={<Counter />} />
+          <Route path='/effect' exact element={<Effect />} />
+          <Route path='/context' exact element={<Context />} />
+        </Routes>
+      </UserContext.Provider>
     </div>
     </Router>
   );
