@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Counter from './learn-useState/Counter';
 import Effect from './learn-useEffect/index';
-import Context, { UserContext } from './learn-useContext/index';
+import Context, { UserContext, TemeContext } from './learn-useContext/index';
 function App() {
   const [values, setValues] = useState('Dari halaman Context')
+  const teme = { background: 'red' }
   return (
     <Router><div className="App-header">
       <nav className='NavBar'>
@@ -23,11 +24,13 @@ function App() {
         </ul>
       </nav>
       <UserContext.Provider value={{ values, setValues }}>
-        <Routes>
-          <Route path='/' exact element={<Counter />} />
-          <Route path='/effect' exact element={<Effect />} />
-          <Route path='/context' exact element={<Context />} />
-        </Routes>
+        <TemeContext.Provider value={teme}>
+          <Routes>
+            <Route path='/' exact element={<Counter />} />
+            <Route path='/effect' exact element={<Effect />} />
+            <Route path='/context' exact element={<Context />} />
+          </Routes>
+        </TemeContext.Provider>
       </UserContext.Provider>
     </div>
     </Router>

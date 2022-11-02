@@ -12,6 +12,7 @@ const themes = {
         background: "#222222",
     },
 }
+export const TemeContext = createContext();
 export const UserContext = createContext(null);
 const ThemeContext = React.createContext(themes.light);
 export default function Index() {

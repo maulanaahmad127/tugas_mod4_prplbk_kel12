@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import logo from "../logo.svg";
 import "./Counter.css";
-import { UserContext } from "../learn-useContext/index";
+import { UserContext, TemeContext } from "../learn-useContext/index";
 export default function Counter() {
     const { values, setValues } = useContext(UserContext);
+    const teme = useContext(TemeContext)
     const [showImage, setShowImage] = useState(true);
     const [count, setCount] = useState(0);
     const [formValue, setValue] = useState("");
@@ -18,7 +19,7 @@ export default function Counter() {
     };
     return (
         <div>
-            <h2>UserContext</h2>
+            <h2 style={teme}>UserContext</h2>
             <div>{values}</div>
             <button onClick={() => setValues("hey")}> ganti value</button>
             <div className="Main">
